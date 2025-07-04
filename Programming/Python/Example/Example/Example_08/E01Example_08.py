@@ -69,8 +69,8 @@ def start(args):
 		Ex)
 		nVal = random.randrange(1, 100)
 		
-		위와 같이 random 모듈에 존재하는 randrange 함수를 호출하면 범위 내에 존재하는 수를 무작위로
-		추출하는 것이 가능하다.
+		위와 같이 random 모듈에 존재하는 randrange 함수를 호출하면 범위 내에 존재하는 수를 
+		무작위로 추출하는 것이 가능하다.
 		"""
 		nVal = random.randrange(1, 100)
 		
