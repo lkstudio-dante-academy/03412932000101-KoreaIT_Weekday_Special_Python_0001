@@ -24,5 +24,4 @@ Ex)
 
 # Training 8
 def start(args):
-	nNumValues = int(input("개수 입력 : "))
-	oListValues = [0] * nNumValues
+	pass
