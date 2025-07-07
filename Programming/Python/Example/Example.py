@@ -46,6 +46,7 @@ from Training.Training_05 import T01Training_05
 from Training.Training_06 import T01Training_06
 from Training.Training_07 import T01Training_07
 from Training.Training_08 import T01Training_08
+from Training.Training_09 import T01Training_09
 
 """
 메인 (Main) 모듈이란?
@@ -71,7 +72,7 @@ Python 은 다른 프로그래밍 언어와 달리 단일 행 주석만을 제�
 # 메인 모듈 일 경우
 if __name__ == "__main__":
 	# E01Example_01.start(sys.argv)
-	E01Example_02.start(sys.argv)
+	# E01Example_02.start(sys.argv)
 	# E01Example_03.start(sys.argv)
 	# E01Example_04.start(sys.argv)
 	# E01Example_05.start(sys.argv)
@@ -93,4 +94,5 @@ if __name__ == "__main__":
 	# T01Training_06.start(sys.argv)
 	# T01Training_07.start(sys.argv)
 	# T01Training_08.start(sys.argv)
+	T01Training_09.start(sys.argv)
 	
