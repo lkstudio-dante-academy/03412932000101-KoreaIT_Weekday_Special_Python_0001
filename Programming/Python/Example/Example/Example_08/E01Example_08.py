@@ -47,8 +47,8 @@ def start(args):
 	oTupleValues = (1, 2, 3, 4, 5)
 	
 	"""
-	아래와 같이 튜플은 생성 되고 나면 더이상 데이터를 변경하는 것이 불가능하다. (+ 즉, 튜플에 존재하는
-	데이터의 변경을 시도 할 경우 예외가 발생한다는 것을 알 수 있다.)
+	아래와 같이 튜플은 생성 되고 나면 더이상 데이터를 변경하는 것이 불가능하다. (+ 즉,
+	튜플에 존재하는 데이터의 변경을 시도 할 경우 예외가 발생한다는 것을 알 수 있다.)
 	"""
 	# oTupleValues[0] = 10
 	
@@ -128,7 +128,9 @@ def start(args):
 		
 	위와 같이 in 키워드와 반복문을 활용하면 리스트에 존재하는 특정 데이터를 모두 제거하는 것이 가능하다.
 	"""
-	oListValues.remove(nVal_Remove)
+	# 값이 존재 할 경우
+	if nVal_Remove in oListValues:
+		oListValues.remove(nVal_Remove)
 	
 	print("\n=====> 리스트 - 제거 후 <=====")
 	
@@ -144,7 +146,9 @@ def start(args):
 	단, del 키워드는 remove 함수와 마찬가지로 잘못 된 위치를 입력했을 경우 내부적으로 예외가 발생하기 때문에
 	주의가 필요하다.
 	"""
-	del oListValues[nIdx_Remove]
+	# 인덱스가 유효 할 경우
+	if nIdx_Remove >= 0 and nIdx_Remove < len(oListValues):
+		del oListValues[nIdx_Remove]
 	
 	print("\n=====> 리스트 - 제거 후 <=====")
 	

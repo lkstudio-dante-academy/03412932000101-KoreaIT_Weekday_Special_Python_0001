@@ -24,4 +24,27 @@ Ex)
 
 # Training 8
 def start(args):
-	pass
+	nNumValues = int(input("개수 입력 : "))
+	oListValues = [0] * nNumValues
+	
+	nPos_Odd = 0
+	nPos_Even = nNumValues - 1
+	
+	for i in range(0, nNumValues):
+		nVal = int(input(f"{i + 1} 번째 정수 입력 : "))
+		
+		# 홀수 일 경우
+		if nVal % 2 != 0:
+			oListValues[nPos_Odd] = nVal
+			nPos_Odd += 1
+		
+		else:
+			oListValues[nPos_Even] = nVal
+			nPos_Even -= 1
+	
+	print("\n=====> 결과 <=====")
+	
+	for nVal in oListValues:
+		print(f"{nVal}, ", end = "")
+	
+	print()
