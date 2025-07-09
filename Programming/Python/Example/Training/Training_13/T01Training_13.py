@@ -1,6 +1,12 @@
 import os
 import sys
 
+"""
+Python 연습 문제 13
+- 회원 관리 프로그램 제작하기 (+ 비선형 컬렉션 활용)
+- 자세한 요구 사항은 연습 문제 12 번 참고
+"""
+
 
 # Training 13
 def start(args):

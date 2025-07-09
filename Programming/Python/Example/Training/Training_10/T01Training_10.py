@@ -51,6 +51,11 @@ def start(args):
 		
 		# 종료 일 경우
 		if nMenu == MENU_EXIT:
+			"""
+			break 키워드란?
+			- 반복문 내부에서만 사용 가능한 키워드로 프로그램의 흐름을 반복문 밖으로 이동 시키는 역할을
+			수행한다. (+ 즉, 해당 키워드를 활용하면 반복문을 즉시 종료 시키는 것이 가능하다.)
+			"""
 			break
 			
 		# 왼쪽으로 이동 일 경우
@@ -60,7 +65,8 @@ def start(args):
 			
 			oListValues.append(nVal)
 		
-		else:
+		# 오른쪽으로 이동 일 경우
+		elif nMenu == MENU_MOVE_RIGHT:
 			nVal = oListValues[-1]
 			del oListValues[-1]
 			
