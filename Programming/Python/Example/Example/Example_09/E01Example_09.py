@@ -92,7 +92,9 @@ def start(args):
 	리스트와 마찬가지로 del 키워드를 이용하면 딕셔너리에 존재하는 데이터를 제거하는 것이 가능하다. (+ 즉,
 	딕셔너리에 존재하지 않는 데이터를 제거 할 경우 예외가 발생한다는 것을 알 수 있다.)
 	"""
-	del oDictValues[oKey_Remove]
+	# 키가 존재 할 경우
+	if oKey_Remove in oDictValues:
+		del oDictValues[oKey_Remove]
 	
 	print("\n=====> 딕셔너리 - 제거 후 <=====")
 	
