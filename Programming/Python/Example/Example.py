@@ -108,11 +108,11 @@ if __name__ == "__main__":
 	# T01Training_04.start(sys.argv)
 	# T01Training_05.start(sys.argv)
 	# T01Training_06.start(sys.argv)
-	# T01Training_07.start(sys.argv)
+	T01Training_07.start(sys.argv)
 	# T01Training_08.start(sys.argv)
 	# T01Training_09.start(sys.argv)
 	# T01Training_10.start(sys.argv)
 	# T01Training_11.start(sys.argv)
 	# T01Training_12.start(sys.argv)
-	T01Training_13.start(sys.argv)
+	# T01Training_13.start(sys.argv)
 	
