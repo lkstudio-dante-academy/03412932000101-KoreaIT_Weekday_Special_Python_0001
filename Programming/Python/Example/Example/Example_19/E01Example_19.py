@@ -2,6 +2,6 @@ import os
 import sys
 
 
-# Example 19 (정렬 - 1)
+# Example 18 (탐색)
 def start(args):
 	pass

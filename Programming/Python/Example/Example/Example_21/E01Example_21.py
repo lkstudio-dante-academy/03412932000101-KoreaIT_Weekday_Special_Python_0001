@@ -2,6 +2,6 @@ import os
 import sys
 
 
-# Example 19 (정렬 - 1)
+# Example 20 (정렬 - 2)
 def start(args):
 	pass

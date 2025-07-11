@@ -1,7 +1,7 @@
 import os
 import sys
 
-from Example.Example_16.CBase import CBase
+from Example.Example_17.CBase import CBase
 
 
 # 자식 클래스

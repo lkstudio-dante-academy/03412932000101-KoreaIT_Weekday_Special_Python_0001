@@ -12,10 +12,10 @@ import random
 작성하지 않을 경우 특정 함수가 자기 자신을 무한히 호출하는 무한 루프에 빠진다는 것을 알 수 있다.)
 
 Ex)
-def someMethod():
-	someMethod()
+def someFunc():
+	someFunc()
 	
-someMethod()
+someFunc()
 
 위와 같이 함수는 자기 자신을 다시 호출하는 것이 가능하지만 재귀 호출을 끝내기 위한 명령문이 없을 경우
 무한 루프에 빠진다는 것을 알 수 있다.
