@@ -48,12 +48,15 @@ def start(args):
 	print(f"합계 A : {nVal_SumA}")
 	print(f"합계 B : {nVal_SumB}")
 	
-	nVal_SumC = getVal_Sum(a_nValB = 20, a_nValA = 10)
+	"""
+	아래와 같이 네임드 매개 변수를 활용하면 순서에 상관 없이 입력 데이터를 명시하는 것이 가능하다.
+	"""
+	nVal_SumC = getVal_Sum(10, a_nValC = 20)
 	
 	print("\n=====> 네임드 매개 변수 <=====")
 	print(f"합계 C : {nVal_SumC}")
 
 
 # 합계를 반환한다
-def getVal_Sum(a_nValA, a_nValB = 0):
-	return a_nValA + a_nValB
+def getVal_Sum(a_nValA, a_nValB = 0, a_nValC = 0):
+	return a_nValA + a_nValB + a_nValC
