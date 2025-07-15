@@ -88,8 +88,6 @@ def findValB_Internal(a_oListValues, a_nVal, a_nLeft, a_nRight):
 	
 	# 값이 왼쪽에 존재 할 경우
 	if a_nVal < a_oListValues[nMiddle]:
-		return findValB_Internal(a_oListValues,
-								 a_nVal, a_nLeft, nMiddle - 1)
+		return findValB_Internal(a_oListValues, a_nVal, a_nLeft, nMiddle - 1)
 	
-	return findValB_Internal(a_oListValues,
-							 a_nVal, nMiddle + 1, a_nRight)
+	return findValB_Internal(a_oListValues, a_nVal, nMiddle + 1, a_nRight)
