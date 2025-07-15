@@ -12,6 +12,10 @@ class CWidget:
 		
 	# 값을 증가 시킨다
 	def incrVal(self, a_nVal):
+		"""
+		클래스 변수에 접근 하기 위해서는 아래와 같이 클래스 이름을 명시해줘야한다. (+ 즉,
+		클래스 이름을 명시하지 않으면 지역 변수에 접근하는 것으로 인지 된다는 것을 알 수 있다.)
+		"""
 		self.m_nVal += a_nVal
 		CWidget.m_nVal_Static += a_nVal
 		
