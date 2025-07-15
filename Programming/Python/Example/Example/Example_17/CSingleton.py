@@ -7,6 +7,7 @@ import sys
 싱글턴 패턴을 활용하면 프로그램 전체에서 자유롭게 접근 가능한 단일 객체를 생성하는 것이 가능하다.)
 """
 
+
 # 싱글턴
 class CSingleton:
 	m_oInst = None

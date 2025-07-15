@@ -1,67 +1,53 @@
 import os
 import sys
 
-from Example.Example_17.CBase import CBase
-from Example.Example_17.CDerived import CDerived
+from Example.Example_17.CSingleton import CSingleton
+from Example.Example_17.CWidget import CWidget
 
 """
-객체 지향 프로그래밍 3 대 요소
-- 캡슐화 (+ or 정보 은닉)
-- 상속
-- 다형성
+클래스 멤버 (Class Member) 란?
+- 객체에 종속 되는 일반적인 멤버와 달리 클래스에 종속 되는 멤버를 의미한다.
 
-캡슐화 (+ or 정보 은닉) 란?
-- 객체가 지니고 있는 데이터 중 민감한 데이터는 외부로부터 보호하는 개념을 의미한다. (+ 즉, 캡슐화는
-보안이 중요한 데이터는 접근을 제한함으로서 객체의 보안성을 높이는 개념이라는 것을 알 수 있다.)
+클래스 멤버는 클래스 자체에 종속 되기 때문에 클래스 별로 1 개만 존재하며 클래스 변수는 모든 객체가
+공유하는 변수라는 특징이 존재한다.
 
-단, Python 은 캡슐화를 직접적으로 지원하는 언어가 아니기 때문에 문법적으로 잘못 된 사용을 막을 방법이 없다는
-단점이 존재한다. (+ 즉, 객체가 지니고 있는 멤버를 외부에서 자유롭게 접근하는 것이 가능하다.)
-
-상속이란?
-- 클래스 간에 부모/자식 관계를 형성 시키는 개념을 의미한다. (+ 즉, 상속을 활용하면 클래스 간에 상/하 관계가
-형성 된다는 것을 알 수 있다.)
-
-클래스가 부모/자식 관계를 형성하면 자식 클래스에서 부모 클래스에 존재하는 멤버를 사용하는 것이 가능하다. (+ 즉,
-상속을 활용하면 클래스 별로 중복적으로 정의 되는 멤버를 최소화 시키는 것이 가능하다.)
-
-Python 클래스 상속 방법
-- 자식 클래스 + 부모 클래스
+또한 클래스 멤버는 클래스 만으로 접근이 가능하다. (+ 즉, 일반적인 멤버는 객체에 종속 되기 때문에 특정 멤버에
+접근하기 위해서는 객체 생성이 필요하지만 클래스 멤버는 객체 생성이 필요 없다는 것을 의미한다.)
 
 Ex)
-class CBase:
-	# Do Something
+class CSomeClass:
+	m_nVal_Static = 0
 	
-class CDerived(CBase):
-	# Do Something
-	
-위와 같이 CDerived 클래스는 CBase 클래스를 상속함으로서 CBase 클래스에 존재하는 멤버를 사용하는 것이
-가능하다.
+CSomeClass.m_nVal_Static = 10
 
-단, 상속은 단방향이기 때문에 두 클래스가 서로를 상속하는 것은 불가능하며 상속을 무분별하게 사용 할 경우
-오히려 프로그램의 구조가 복잡해지는 단점이 존재한다. (+ 즉, 클래스 간에 관계가 복잡해진다는 것을 의미한다.)
-
-따라서 상속은 is a 의 관계가 성립 할 경우에만 사용하는 것이 일반적인 관례이다.
-
-상속을 사용하는 주된 이유
-- 멤버 중복 최소화
-- 기존 클래스 기능 확장
-
-다형성이란?
-- 사물이 다양한 형태를 띄는 개념을 의미한다. (+ 즉, 다형성을 활용하면 동일한 사물이라 하더라도 조건에 따라
-다양한 형태가 된다는 것을 알 수 있다.)
-
-단, Python 은 약한 형식 언어 (Weak Type Language) 이기 때문에 다형성을 명시적으로 지원하지 않는다. (+ 즉,
-변수에 데이터를 할당 할 경우 할당하는 데이터에 맞춰서 변수의 자료형이 변경 된다는 것을 의미한다.)
+위와 같이 클래스 영역에 변수를 선언하면 해당 변수는 클래스 자체에 종속 되는 클래스 변수가 된다. (+ 즉,
+해당 변수는 클래스 만으로 접근 가능하다는 것을 알 수 있다.)
 """
 
 
-# Example 16 (클래스 - 2)
+# Example 18
 def start(args):
-	oBase = CBase(10, 3.14)
-	oDerived = CDerived(20, 3.14, "Hello, World!")
+	oWidgetA = CWidget()
+	oWidgetB = CWidget()
 	
-	print("=====> 부모 클래스 <=====")
-	oBase.showInfo()
+	oWidgetA.incrVal(10)
+	oWidgetB.incrVal(20)
 	
-	print("\n=====> 자식 클래스 <=====")
-	oDerived.showInfo()
+	print("=====> 위젯 - A <=====")
+	oWidgetA.showInfo()
+	
+	print("\n=====> 위젯 - B <=====")
+	oWidgetB.showInfo()
+	
+	oSingletonA = CSingleton.getInst()
+	oSingletonB = CSingleton.getInst()
+	
+	oSingletonA.setVal(10)
+	oSingletonB.setVal(20)
+	
+	print("\n=====> 싱글턴 - A <=====")
+	oSingletonA.showInfo()
+	
+	print("\n=====> 싱글턴 - B <=====")
+	oSingletonB.showInfo()
+	
