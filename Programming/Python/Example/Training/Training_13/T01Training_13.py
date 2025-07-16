@@ -19,7 +19,7 @@ def start(args):
 	nMenu = 0
 	oDictMembers = {}
 	
-	while nMenu != MENU_EXIT:
+	while True:
 		print("=====> 메뉴 <=====")
 		print("1. 회원 추가")
 		print("2. 회원 제거")
@@ -28,6 +28,10 @@ def start(args):
 		print("5. 종료")
 		
 		nMenu = int(input("\n선택 : "))
+		
+		# 종료 일 경우
+		if nMenu == MENU_EXIT:
+			break
 		
 		# 회원 추가 일 경우
 		if nMenu == MENU_ADD_MEMBER:
