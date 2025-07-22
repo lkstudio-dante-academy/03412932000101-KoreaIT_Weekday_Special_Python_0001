@@ -25,7 +25,7 @@ CSomeClass.m_nVal_Static = 10
 """
 
 
-# Example 18
+# Example 17 (클래스 - 2)
 def start(args):
 	oWidgetA = CWidget()
 	oWidgetB = CWidget()

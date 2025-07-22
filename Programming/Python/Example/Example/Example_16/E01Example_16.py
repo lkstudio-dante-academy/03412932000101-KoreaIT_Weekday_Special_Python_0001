@@ -43,7 +43,7 @@ oSomeObj.showInfo()
 """
 
 
-# Example 15 (클래스 - 1)
+# Example 16 (클래스 - 1)
 def start(args):
 	"""
 	아래와 같이 __init__ 함수를 활용하면 객체를 생성과 동시에 특정 데이터로 해당 객체를 초기화하는 것이 가능하다.

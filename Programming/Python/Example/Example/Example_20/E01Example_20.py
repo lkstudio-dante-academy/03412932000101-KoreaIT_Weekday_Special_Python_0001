@@ -1,6 +1,9 @@
 import os
 import sys
 
+import random
+from Example.Example_20.Sorting import sortValues_ByBubble, sortValues_ByInsertion, sortValues_ByMerge
+
 """
 정렬 (Sorting) 이란?
 - 데이터를 특정 기준에 따라 순서를 재배치하는 것을 의미한다. (+ 즉, 정렬은 데이터의 탐색을 위해 데이터의 순서를
@@ -20,6 +23,16 @@ import sys
 """
 
 
-# Example 19 (정렬 - 1)
+# Example 20 (정렬 - 1)
 def start(args):
-	pass
+	oListValues = [random.randrange(1, 100) for i in range(0, 10)]
+	
+	print("=====> 리스트 - 정렬 전 <=====")
+	print(oListValues)
+	
+	# sortValues_ByBubble(oListValues)
+	# sortValues_ByInsertion(oListValues)
+	sortValues_ByMerge(oListValues)
+	
+	print("\n=====> 리스트 - 정렬 후 <=====")
+	print(oListValues)

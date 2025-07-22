@@ -66,7 +66,7 @@ someFunc 외부에서 접근을 시도하면 예외가 발생한다는 것을 �
 """
 
 
-# Example 10 (함수 - 1)
+# Example 11 (함수 - 1)
 def start(args):
 	oTokens = input("수식 입력 : ").split()
 	oOperator = oTokens[1]

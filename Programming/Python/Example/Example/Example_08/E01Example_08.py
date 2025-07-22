@@ -42,7 +42,7 @@ if 조건문 등을 활용해야한다는 것을 알 수 있다.)
 """
 
 
-# Example 7 (컬렉션 - 1)
+# Example 8 (컬렉션 - 1)
 def start(args):
 	oTupleValues = (1, 2, 3, 4, 5)
 	

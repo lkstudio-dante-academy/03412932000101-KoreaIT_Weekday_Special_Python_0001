@@ -24,7 +24,7 @@ oDictValues = {str(i + 1): i + 1 for i in range(0, 10)]			<- {"1": 1, ..., "10":
 """
 
 
-# Example 9 (컬렉션 - 3)
+# Example 10 (컬렉션 - 3)
 def start(args):
 	"""
 	아래와 같이 리스트 컴프리헨션은 필요에 따라 조건문을 사용하는 것이 가능하다. (+ 즉, 조건문을 통해

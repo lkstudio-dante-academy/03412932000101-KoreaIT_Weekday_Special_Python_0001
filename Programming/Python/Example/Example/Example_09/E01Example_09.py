@@ -32,7 +32,7 @@ Python 비선형 컬렉션 종류
 """
 
 
-# Example 8 (컬렉션 - 2)
+# Example 9 (컬렉션 - 2)
 def start(args):
 	print("=====> 데이터 입력 <=====")
 	oSetValues = set()

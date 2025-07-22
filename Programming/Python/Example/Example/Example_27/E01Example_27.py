@@ -44,6 +44,6 @@ import sys
 """
 
 
-# Example 27
+# Example 27 (그래프)
 def start(args):
 	pass

@@ -56,7 +56,7 @@ class CDerived(CBase):
 """
 
 
-# Example 16 (클래스 - 2)
+# Example 18 (클래스 - 3)
 def start(args):
 	oBase = CBase(10, 3.14)
 	oDerived = CDerived(20, 3.14, "Hello, World!")
