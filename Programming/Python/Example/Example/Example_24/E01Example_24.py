@@ -1,6 +1,8 @@
 import os
 import sys
 
+from Example.Example_24.CQueue import CQueue
+
 """
 큐 (Queue) 란?
 - FIFO (First In First Out) or LILO (Last In Last Out) 구조로 데이터를 관리하는 자료구조를 의미한다.
@@ -16,4 +18,18 @@ import sys
 
 # Example 24 (큐)
 def start(args):
-	pass
+	oQueueValues = CQueue()
+	print("=====> 입력 순서 <=====")
+	
+	for i in range(0, 10):
+		print(f"{i + 1}, ", end = "")
+		oQueueValues.enqueue(i + 1)
+	
+	print("\n\n=====> 큐 <=====")
+	
+	while not oQueueValues.isEmpty():
+		nVal = oQueueValues.dequeue()
+		print(f"{nVal}, ", end = "")
+		
+	print()
+	

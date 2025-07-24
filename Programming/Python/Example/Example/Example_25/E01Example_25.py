@@ -1,6 +1,9 @@
 import os
 import sys
 
+import random
+from Example.Example_25.CTree_BSearch import CTree_BSearch
+
 """
 비선형 자료구조 종류
 - 트리
@@ -94,4 +97,32 @@ import sys
 
 # Example 25 (이진 탐색 트리)
 def start(args):
-	pass
+	oTreeValues = CTree_BSearch()
+	
+	for i in range(0, 10):
+		nVal = random.randrange(1, 100)
+		oTreeValues.addVal(nVal)
+		
+	print("=====> 이진 탐색 트리 - 전위 순회 <=====")
+	oTreeValues.enumerate(CTree_BSearch.ORDER_PRE, lambda a_nVal: print(f"{a_nVal}, ", end = ""))
+	
+	print("\n\n=====> 이진 탐색 트리 - 중위 순회 <=====")
+	oTreeValues.enumerate(CTree_BSearch.ORDER_IN, lambda a_nVal: print(f"{a_nVal}, ", end = ""))
+	
+	print("\n\n=====> 이진 탐색 트리 - 후위 순회 <=====")
+	oTreeValues.enumerate(CTree_BSearch.ORDER_POST, lambda a_nVal: print(f"{a_nVal}, ", end = ""))
+	
+	nVal_Remove = int(input("\n\n정수 입력 (제거) : "))
+	oTreeValues.removeVal(nVal_Remove)
+	
+	print("\n=====> 이진 탐색 트리 - 전위 순회 (제거 후) <=====")
+	oTreeValues.enumerate(CTree_BSearch.ORDER_PRE, lambda a_nVal: print(f"{a_nVal}, ", end = ""))
+	
+	print("\n\n=====> 이진 탐색 트리 - 중위 순회 (제거 후) <=====")
+	oTreeValues.enumerate(CTree_BSearch.ORDER_IN, lambda a_nVal: print(f"{a_nVal}, ", end = ""))
+	
+	print("\n\n=====> 이진 탐색 트리 - 후위 순회 (제거 후) <=====")
+	oTreeValues.enumerate(CTree_BSearch.ORDER_POST, lambda a_nVal: print(f"{a_nVal}, ", end = ""))
+	
+	print()
+	

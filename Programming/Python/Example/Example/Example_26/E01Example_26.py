@@ -1,6 +1,11 @@
 import os
 import sys
 
+import random
+
+from Example.Example_26.CTree_AVL import CTree_AVL
+from Example.Example_26.CTree_RedBlack import CTree_RedBlack
+
 """
 밸런스 이진 탐색 트리 (Balance Binary Search Tree) 란?
 - 이진 탐색 트리의 일종으로 트리의 균형이 무너지는 것을 방지함으로서 O(logN) 의 탐색 성능을
