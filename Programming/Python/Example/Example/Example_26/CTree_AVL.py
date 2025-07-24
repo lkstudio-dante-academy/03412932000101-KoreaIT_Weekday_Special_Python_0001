@@ -4,10 +4,6 @@ import sys
 
 # AVL 트리
 class CTree_AVL:
-	ORDER_PRE = 0
-	ORDER_IN = 1
-	ORDER_POST = 2
-	
 	# 노드
 	class CNode:
 		# 초기화
@@ -17,6 +13,7 @@ class CTree_AVL:
 			self.m_oNode_Parent = None
 			self.m_oNode_LChild = None
 			self.m_oNode_RChild = None
+			
 	
 	# 초기화
 	def __init__(self):
@@ -170,6 +167,9 @@ class CTree_AVL:
 		a_oNode.m_oNode_Parent = oNode_RChild
 		a_oNode.m_oNode_RChild = oNode_RLChild
 		
+		oNode_RChild.m_oNode_Parent = oNode_Parent
+		oNode_RChild.m_oNode_LChild = a_oNode
+		
 		# 루트 노드 일 경우
 		if a_oNode == self.m_oNode_Root:
 			self.m_oNode_Root = oNode_RChild
@@ -196,6 +196,9 @@ class CTree_AVL:
 		a_oNode.m_oNode_Parent = oNode_LChild
 		a_oNode.m_oNode_LChild = oNode_LRChild
 		
+		oNode_LChild.m_oNode_Parent = oNode_Parent
+		oNode_LChild.m_oNode_RChild = a_oNode
+		
 		# 루트 노드 일 경우
 		if a_oNode == self.m_oNode_Root:
 			self.m_oNode_Root = oNode_LChild
@@ -214,48 +217,20 @@ class CTree_AVL:
 				oNode_Parent.m_oNode_RChild = oNode_LChild
 		
 	# 노드를 순회한다
-	def enumerate(self, a_nOrder, a_oCallback):
-		self.m_oListFunctions = [
-			self.enumerate_ByPreOrder,
-			self.enumerate_ByInOrder,
-			self.enumerate_ByPostOrder
-		]
-		
-		self.m_oListFunctions[a_nOrder](self.m_oNode_Root, a_oCallback)
-	
-	# 노드를 전위 순회한다
-	def enumerate_ByPreOrder(self, a_oNode, a_oCallback):
-		# 순회가 불가능 할 경우
-		if a_oNode == None:
-			return
-		
-		a_oCallback(a_oNode.m_nVal)
-		
-		self.enumerate_ByPreOrder(a_oNode.m_oNode_LChild, a_oCallback)
-		self.enumerate_ByPreOrder(a_oNode.m_oNode_RChild, a_oCallback)
-	
+	def enumerate(self, a_oCallback):
+		self.enumerate_ByInOrder(self.m_oNode_Root, 0, a_oCallback)
+
 	# 노드를 중위 순회한다
-	def enumerate_ByInOrder(self, a_oNode, a_oCallback):
+	def enumerate_ByInOrder(self, a_oNode, a_nDepth, a_oCallback):
 		# 순회가 불가능 할 경우
 		if a_oNode == None:
 			return
 		
-		self.enumerate_ByInOrder(a_oNode.m_oNode_LChild, a_oCallback)
-		a_oCallback(a_oNode.m_nVal)
+		self.enumerate_ByInOrder(a_oNode.m_oNode_LChild, a_nDepth + 1, a_oCallback)
+		a_oCallback(a_nDepth, a_oNode.m_nVal)
 		
-		self.enumerate_ByInOrder(a_oNode.m_oNode_RChild, a_oCallback)
-	
-	# 노드를 후위 순회한다
-	def enumerate_ByPostOrder(self, a_oNode, a_oCallback):
-		# 순회가 불가능 할 경우
-		if a_oNode == None:
-			return
-		
-		self.enumerate_ByPostOrder(a_oNode.m_oNode_LChild, a_oCallback)
-		self.enumerate_ByPostOrder(a_oNode.m_oNode_RChild, a_oCallback)
-		
-		a_oCallback(a_oNode.m_nVal)
-	
+		self.enumerate_ByInOrder(a_oNode.m_oNode_RChild, a_nDepth + 1, a_oCallback)
+
 	# 노드를 생성한다
 	def createNode(self, a_nVal):
 		return CTree_AVL.CNode(a_nVal)

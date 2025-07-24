@@ -17,6 +17,7 @@ class CTree_BSearch:
 			self.m_oNode_LChild = None
 			self.m_oNode_RChild = None
 			
+			
 	# 초기화
 	def __init__(self):
 		self.m_oNode_Root = None

@@ -19,9 +19,9 @@ def start(args):
 	print("=====> 리스트 - 정렬 전 <=====")
 	print(oListValues)
 	
-	sortValues_BySelection(oListValues)
+	# sortValues_BySelection(oListValues)
 	# sortValues_ByHeap(oListValues)
-	# sortValues_ByQuick(oListValues)
+	sortValues_ByQuick(oListValues)
 	
 	print("\n=====> 리스트 - 정렬 후 <=====")
 	print(oListValues)
