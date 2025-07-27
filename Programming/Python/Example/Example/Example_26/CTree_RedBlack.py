@@ -28,35 +28,34 @@ class CTree_RedBlack:
 		
 	# 값을 추가한다
 	def addVal(self, a_nVal):
+		oNode_New = self.createNode(a_nVal)
+		
 		# 루트 노드가 없을 경우
 		if self.m_oNode_Root == self.m_oNode_Nil:
-			self.m_oNode_Root = self.createNode(a_nVal)
-			self.m_oNode_Root.m_nColor = CTree_RedBlack.COLOR_BLACK
-			
-			return
-		
-		oNode = self.m_oNode_Root
-		oNode_Parent = None
-		
-		while oNode != self.m_oNode_Nil:
-			oNode_Parent = oNode
-			
-			# 값이 작을 경우
-			if a_nVal <= oNode.m_nVal:
-				oNode = oNode.m_oNode_LChild
-			
-			else:
-				oNode = oNode.m_oNode_RChild
-		
-		oNode_New = self.createNode(a_nVal)
-		oNode_New.m_oNode_Parent = oNode_Parent
-		
-		# 값이 작을 경우
-		if a_nVal <= oNode_Parent.m_nVal:
-			oNode_Parent.m_oNode_LChild = oNode_New
+			self.m_oNode_Root = oNode_New
 		
 		else:
-			oNode_Parent.m_oNode_RChild = oNode_New
+			oNode = self.m_oNode_Root
+			oNode_Parent = None
+			
+			while oNode != self.m_oNode_Nil:
+				oNode_Parent = oNode
+				
+				# 값이 작을 경우
+				if a_nVal <= oNode.m_nVal:
+					oNode = oNode.m_oNode_LChild
+				
+				else:
+					oNode = oNode.m_oNode_RChild
+			
+			oNode_New.m_oNode_Parent = oNode_Parent
+			
+			# 값이 작을 경우
+			if a_nVal <= oNode_Parent.m_nVal:
+				oNode_Parent.m_oNode_LChild = oNode_New
+			
+			else:
+				oNode_Parent.m_oNode_RChild = oNode_New
 		
 		self.rebalance_ByAdd(oNode_New)
 	
@@ -77,24 +76,25 @@ class CTree_RedBlack:
 		# 루트 노드 일 경우
 		if oNode_Remove == self.m_oNode_Root:
 			self.m_oNode_Root = oNode_Remove.m_oNode_LChild if oNode_Remove.m_oNode_LChild != self.m_oNode_Nil else oNode_Remove.m_oNode_RChild
-		
-		# 왼쪽 자식이 존재 할 경우
-		if oNode_Remove.m_oNode_LChild != self.m_oNode_Nil:
-			# 제거 할 노드가 부모의 왼쪽 자식 일 경우
-			if oNode_Remove == oNode_Remove.m_oNode_Parent.m_oLChild:
-				oNode_Remove.m_oNode_Parent.m_oNode_LChild = oNode_Remove.m_oNode_LChild
 			
-			else:
-				oNode_Remove.m_oNode_Parent.m_oNode_RChild = oNode_Remove.m_oNode_RChild
-		
 		else:
-			# 제거 할 노드가 부모의 왼쪽 자식 일 경우
-			if oNode_Remove == oNode_Remove.m_oNode_Parent.m_oNode_LChild:
-				oNode_Remove.m_oNode_Parent.m_oNode_LChild = oNode_Remove.m_oNode_RChild
+			# 왼쪽 자식이 존재 할 경우
+			if oNode_Remove.m_oNode_LChild != self.m_oNode_Nil:
+				# 제거 할 노드가 부모의 왼쪽 자식 일 경우
+				if oNode_Remove == oNode_Remove.m_oNode_Parent.m_oLChild:
+					oNode_Remove.m_oNode_Parent.m_oNode_LChild = oNode_Remove.m_oNode_LChild
+				
+				else:
+					oNode_Remove.m_oNode_Parent.m_oNode_RChild = oNode_Remove.m_oNode_RChild
 			
 			else:
-				oNode_Remove.m_oNode_Parent.m_oNode_RChild = oNode_Remove.m_oNode_RChild
-		
+				# 제거 할 노드가 부모의 왼쪽 자식 일 경우
+				if oNode_Remove == oNode_Remove.m_oNode_Parent.m_oNode_LChild:
+					oNode_Remove.m_oNode_Parent.m_oNode_LChild = oNode_Remove.m_oNode_RChild
+				
+				else:
+					oNode_Remove.m_oNode_Parent.m_oNode_RChild = oNode_Remove.m_oNode_RChild
+					
 		self.rebalance_ByRemove(oNode_Remove)
 	
 	# 노드를 탐색한다
@@ -120,7 +120,41 @@ class CTree_RedBlack:
 			if oNode.m_oNode_Parent.m_nColor != CTree_RedBlack.COLOR_RED:
 				break
 				
+			bIsLeft = oNode.m_oNode_Parent == oNode.m_oNode_Parent.m_oNode_Parent.m_oNode_LChild
+			oNode_Uncle = oNode.m_oNode_Parent.m_oNode_Parent.m_oNode_RChild if bIsLeft else oNode.m_oNode_Parent.m_oNode_Parent.m_oNode_LChild
 			
+			# 삼촌 노드가 빨간색 일 경우
+			if oNode_Uncle.m_nColor == CTree_RedBlack.COLOR_RED:
+				oNode.m_oNode_Parent.m_oNode_Parent.m_nColor = CTree_RedBlack.COLOR_RED
+				
+				oNode.m_oNode_Parent.m_nColor = CTree_RedBlack.COLOR_BLACK
+				oNode_Uncle.m_nColor = CTree_RedBlack.COLOR_BLACK
+				
+				oNode = oNode.m_oNode_Parent.m_oNode_Parent
+				continue
+				
+			# 부모 노드가 왼쪽 자식 일 경우
+			if bIsLeft:
+				# 현재 노드가 오른쪽 자식 일 경우
+				if oNode == oNode.m_oNode_Parent.m_oNode_RChild:
+					oNode = oNode.m_oNode_Parent
+					self.rotateNode_Left(oNode)
+					
+				oNode.m_oNode_Parent.m_nColor = CTree_RedBlack.COLOR_BLACK
+				oNode.m_oNode_Parent.m_oNode_Parent.m_nColor = CTree_RedBlack.COLOR_RED
+			
+				self.rotateNode_Right(oNode.m_oNode_Parent.m_oNode_Parent)
+				
+			else:
+				# 현재 노드가 왼쪽 자식 일 경우
+				if oNode == oNode.m_oNode_Parent.m_oNode_LChild:
+					oNode = oNode.m_oNode_Parent
+					self.rotateNode_Right(oNode)
+				
+				oNode.m_oNode_Parent.m_nColor = CTree_RedBlack.COLOR_BLACK
+				oNode.m_oNode_Parent.m_oNode_Parent.m_nColor = CTree_RedBlack.COLOR_RED
+				
+				self.rotateNode_Left(oNode.m_oNode_Parent.m_oNode_Parent)
 		
 		self.m_oNode_Root.m_nColor = CTree_RedBlack.COLOR_BLACK
 		
@@ -170,10 +204,30 @@ class CTree_RedBlack:
 					self.rotateNode_Right(oNode_Sibiling)
 					oNode_Sibiling = oNode_Sibiling.m_oNode_Parent
 					
+				oNode_Sibiling.m_nColor = oNode_Sibiling.m_oNode_Parent.m_nColor
+				
+				oNode_Sibiling.m_oNode_Parent.m_nColor = CTree_RedBlack.COLOR_BLACK
+				oNode_Sibiling.m_oNode_RChild.m_nColor = CTree_RedBlack.COLOR_BLACK
+				
+				self.rotateNode_Left(oNode_Sibiling.m_oNode_Parent)
+					
 			else:
 				# 형제 노드의 오른쪽 자식이 빨간색 일 경우
 				if oNode_Sibiling.m_oNode_RChild.m_nColor == CTree_RedBlack.COLOR_RED:
-					pass
+					oNode_Sibiling.m_nColor = CTree_RedBlack.COLOR_RED
+					oNode_Sibiling.m_oNode_RChild.m_nColor = CTree_RedBlack.COLOR_BLACK
+					
+					self.rotateNode_Left(oNode_Sibiling)
+					oNode_Sibiling = oNode_Sibiling.m_oNode_Parent
+				
+				oNode_Sibiling.m_nColor = oNode_Sibiling.m_oNode_Parent.m_nColor
+				
+				oNode_Sibiling.m_oNode_Parent.m_nColor = CTree_RedBlack.COLOR_BLACK
+				oNode_Sibiling.m_oNode_LChild.m_nColor = CTree_RedBlack.COLOR_BLACK
+				
+				self.rotateNode_Right(oNode_Sibiling.m_oNode_Parent)
+					
+			oNode = self.m_oNode_Root
 		
 		oNode.m_nColor = CTree_RedBlack.COLOR_BLACK
 	

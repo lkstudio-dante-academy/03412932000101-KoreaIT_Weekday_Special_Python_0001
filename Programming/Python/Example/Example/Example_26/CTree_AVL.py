@@ -32,35 +32,36 @@ class CTree_AVL:
 	
 	# 값을 추가한다
 	def addVal(self, a_nVal):
+		oNode_New = self.createNode(a_nVal)
+		
 		# 루트 노드가 없을 경우
 		if self.m_oNode_Root == None:
-			self.m_oNode_Root = self.createNode(a_nVal)
-			return
-		
-		oNode = self.m_oNode_Root
-		oNode_Parent = None
-		
-		while oNode != None:
-			oNode_Parent = oNode
-			
-			# 값이 작을 경우
-			if a_nVal <= oNode.m_nVal:
-				oNode = oNode.m_oNode_LChild
-			
-			else:
-				oNode = oNode.m_oNode_RChild
-		
-		oNode_New = self.createNode(a_nVal)
-		oNode_New.m_oNode_Parent = oNode_Parent
-		
-		# 값이 작을 경우
-		if a_nVal <= oNode_Parent.m_nVal:
-			oNode_Parent.m_oNode_LChild = oNode_New
+			self.m_oNode_Root = oNode_New
 		
 		else:
-			oNode_Parent.m_oNode_RChild = oNode_New
+			oNode = self.m_oNode_Root
+			oNode_Parent = None
 			
-		self.rebalance(oNode_Parent)
+			while oNode != None:
+				oNode_Parent = oNode
+				
+				# 값이 작을 경우
+				if a_nVal <= oNode.m_nVal:
+					oNode = oNode.m_oNode_LChild
+				
+				else:
+					oNode = oNode.m_oNode_RChild
+			
+			oNode_New.m_oNode_Parent = oNode_Parent
+			
+			# 값이 작을 경우
+			if a_nVal <= oNode_Parent.m_nVal:
+				oNode_Parent.m_oNode_LChild = oNode_New
+			
+			else:
+				oNode_Parent.m_oNode_RChild = oNode_New
+			
+		self.rebalance(oNode_New)
 	
 	# 값을 제거한다
 	def removeVal(self, a_nVal):

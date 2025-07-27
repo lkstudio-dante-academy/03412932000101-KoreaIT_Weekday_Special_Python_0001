@@ -1,6 +1,11 @@
 import os
 import sys
 
+import random
+
+from Example.Example_22.CList_Array import CList_Array
+from Example.Example_22.CList_Linked import CList_Linked
+
 """
 자료구조 (Data Structure) 란?
 - 데이터를 저장하고 표현하는 방법을 의미한다. (+ 즉, 자료구조는 데이터를 저장하고 저장 된 데이터에 대한
@@ -65,4 +70,34 @@ import sys
 
 # Example 22 (리스트)
 def start(args):
-	pass
+	# oListValues = CList_Array()
+	oListValues = CList_Linked()
+	
+	for i in range(0, 10):
+		nVal = random.randrange(1, 100)
+		oListValues.addVal(nVal)
+		
+	print("=====> 리스트 <=====")
+	printValues(oListValues)
+	
+	nVal_Insert = int(input("\n정수 입력 (추가) : "))
+	oListValues.insertVal(0, nVal_Insert)
+	
+	print("\n=====> 리스트 - 추가 후 <=====")
+	printValues(oListValues)
+	
+	nVal_Remove = int(input("\n정수 입력 (제거) : "))
+	oListValues.removeVal(nVal_Remove)
+	
+	print("\n=====> 리스트 - 제거 후 <=====")
+	printValues(oListValues)
+	
+
+# 값을 출력한다
+def printValues(a_oListValues):
+	for i in range(0, a_oListValues.getNumValues()):
+		nVal = a_oListValues.getVal(i)
+		print(f"{nVal}, ", end = "")
+		
+	print()
+	

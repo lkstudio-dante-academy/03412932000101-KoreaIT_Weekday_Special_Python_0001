@@ -52,7 +52,6 @@ from Example.Example_26 import E01Example_26
 from Example.Example_27 import E01Example_27
 from Example.Example_28 import E01Example_28
 from Example.Example_29 import E01Example_29
-from Example.Example_30 import E01Example_30
 
 from Training.Training_01 import T01Training_01
 from Training.Training_02 import T01Training_02
@@ -124,8 +123,8 @@ if __name__ == "__main__":
 	# E01Example_22.start(sys.argv)
 	# E01Example_23.start(sys.argv)
 	# E01Example_24.start(sys.argv)
-	# E01Example_25.start(sys.argv)
-	E01Example_26.start(sys.argv)
+	E01Example_25.start(sys.argv)
+	# E01Example_26.start(sys.argv)
 	# E01Example_27.start(sys.argv)
 	# E01Example_28.start(sys.argv)
 	# E01Example_29.start(sys.argv)

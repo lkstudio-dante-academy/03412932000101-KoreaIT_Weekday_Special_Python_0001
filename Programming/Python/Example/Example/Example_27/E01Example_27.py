@@ -1,6 +1,9 @@
 import os
 import sys
 
+from Example.Example_27.CGraph_List import CGraph_List
+from Example.Example_27.CGraph_Matrix import CGraph_Matrix
+
 """
 그래프 (Graph) 란?
 - 정점과 간선의 집합으로 데이터 간의 관계를 표현하는 자료구조를 의미한다. (+ 즉, 그래프를 활용하면
@@ -46,4 +49,39 @@ import sys
 
 # Example 27 (그래프)
 def start(args):
-	pass
+	# oGraph = CGraph_List()
+	oGraph = CGraph_Matrix()
+	
+	oGraph.addVertex("A")
+	oGraph.addVertex("B")
+	oGraph.addVertex("C")
+	oGraph.addVertex("D")
+	oGraph.addVertex("E")
+	oGraph.addVertex("F")
+	
+	oGraph.addEdge("A", "B", 1)
+	oGraph.addEdge("A", "C", 2)
+	
+	oGraph.addEdge("B", "D", 1)
+	oGraph.addEdge("B", "E", 2)
+	
+	oGraph.addEdge("C", "F", 1)
+	oGraph.addEdge("C", "A", 2)
+	
+	oGraph.addEdge("D", "B", 1)
+	oGraph.addEdge("D", "C", 2)
+	
+	oGraph.addEdge("E", "D", 1)
+	oGraph.addEdge("E", "F", 2)
+	
+	oGraph.addEdge("F", "A", 1)
+	oGraph.addEdge("F", "B", 2)
+	
+	print("=====> 그래프 - 깊이 우선 탐색 <=====")
+	oGraph.enumerate(CGraph_List.SEARCH_DEPTH, "A", lambda a_oKey: print(f"{a_oKey}, ", end = ""))
+	
+	print("\n\n=====> 그래프 - 너비 우선 탐색 <=====")
+	oGraph.enumerate(CGraph_List.SEARCH_BREADTH, "A", lambda a_oKey: print(f"{a_oKey}, ", end = ""))
+	
+	print()
+	

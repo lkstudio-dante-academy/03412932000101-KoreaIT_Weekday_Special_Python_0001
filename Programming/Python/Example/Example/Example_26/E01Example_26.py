@@ -136,14 +136,19 @@ AVL 트리 RL 상태 회복 방법
 
 # Example 26 (밸런스 이진 탐색 트리)
 def start(args):
-	oTreeValuesA = CTree_AVL()
+	# oTreeValues = CTree_AVL()
+	oTreeValues = CTree_RedBlack()
 	
 	for i in range(0, 10):
 		nVal = random.randrange(1, 100)
-		oTreeValuesA.addVal(nVal)
+		oTreeValues.addVal(nVal)
 		
-	print("=====> AVL 트리 <=====")
-	oTreeValuesA.enumerate(lambda a_nDepth, a_nVal: print(f"{'\t' * a_nDepth}{a_nVal}"))
+	print("=====> 밸런스 이진 탐색 트리 <=====")
+	oTreeValues.enumerate(lambda a_nDepth, a_nVal: print(f"{'\t' * a_nDepth}{a_nVal}"))
 	
-	print()
+	nVal_Remove = int(input("\n정수 입력 (제거) : "))
+	oTreeValues.removeVal(nVal_Remove)
+	
+	print("=====> 밸런스 이진 탐색 트리 - 제거 후 <=====")
+	oTreeValues.enumerate(lambda a_nDepth, a_nVal: print(f"{'\t' * a_nDepth}{a_nVal}"))
 	
