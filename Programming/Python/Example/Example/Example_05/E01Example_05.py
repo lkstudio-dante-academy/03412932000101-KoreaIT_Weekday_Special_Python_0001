@@ -77,7 +77,7 @@ def start(args):
 			print("C 학점입니다.")
 		
 		else:
-			print("D 학접입니다.")
+			print("D 학점입니다.")
 			
 	print("\n=====> 조건문 - 2 <=====")
 	
@@ -95,5 +95,5 @@ def start(args):
 			print("C 학점입니다.")
 		
 		else:
-			print("D 학접입니다.")
+			print("D 학점입니다.")
 			
